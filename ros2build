@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Builds and sources the current ROS2_WORKSPACE.
+
+if [ "$1" == "-h" ] || [ "$1" == "--help" ] ; then
+  echo "Builds and sources the current ROS2_WORKSPACE."
+  echo "Usage: `basename $0` [-h] [packages to build]"
+  exit
+fi
+
+if [ "$ROS2_WORKSPACE" == "" ]
+then echo "ROS2_WORKSPACE environment variable was is not set. Cancelling."
+exit
+fi
+
+if [ $@ == "" ]
+then
+(cd $ROS2_WORKSPACE && colcon build)
+else
+(cd $ROS2_WORKSPACE && colcon build --packages-select "$@")
+fi
+source $ROS2_WORKSPACE/install/setup.bash

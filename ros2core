@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# runs the Zenoh server.
+
+if [ "$1" == "-h" ] || [ "$1" == "--help" ] ; then
+  echo "Starts the RMW Zenoh server."
+  echo "Usage: `basename $0` [-h]"
+  exit 0
+fi
+
+
+ros2 run rmw_zenoh_cpp rmw_zenohd
