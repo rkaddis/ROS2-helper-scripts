@@ -13,7 +13,7 @@ then echo "ROS2_WORKSPACE environment variable was is not set. Cancelling."
 exit
 fi
 
-if [ $@ == "" ]
+if [[ "$@" == "" ]]
 then
 (cd $ROS2_WORKSPACE && colcon build)
 else
